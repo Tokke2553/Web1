@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="theme-color" content="#f3f0e8" />
+    <title>Blackjack · Mesa 21</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#mesa" aria-label="Mesa 21, inicio">
+          <span class="brand-mark" aria-hidden="true">21</span>
+          <span class="brand-name">MESA <strong>21</strong></span>
+        </a>
+        <div class="table-status"><span class="status-dot"></span> MESA ABIERTA</div>
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          type="button"
+          aria-label="Activar modo oscuro"
+          aria-pressed="false"
+          title="Cambiar tema (N)"
+        >
+          <span class="theme-icon" aria-hidden="true">◐</span>
+          <span class="theme-label">Tema</span>
+        </button>
+      </header>
+
+      <main id="mesa">
+        <section class="game-layout" aria-label="Mesa de blackjack">
+          <div class="table-area">
+            <div class="table-heading">
+              <div>
+                <p class="eyebrow">BLACKJACK CLÁSICO</p>
+                <h1>La mesa <em>es tuya.</em></h1>
+              </div>
+              <div class="round-label"><span>RONDA</span><strong id="round-number">00</strong></div>
+            </div>
+
+            <p class="game-message" id="game-message" role="status" aria-live="polite">
+              Elige tus fichas y reparte para empezar.
+            </p>
+
+            <div class="felt-table">
+              <div class="felt-ornament" aria-hidden="true">♠</div>
+              <section class="dealer-zone" aria-labelledby="dealer-title">
+                <div class="hand-heading">
+                  <h2 id="dealer-title">Crupier</h2>
+                  <span class="hand-total" id="dealer-total">—</span>
+                </div>
+                <div class="cards dealer-cards" id="dealer-cards" aria-label="Cartas del crupier"></div>
+                <p class="hand-caption">MANO DEL CRUPIER</p>
+              </section>
+
+              <div class="table-divider" aria-hidden="true"><span>✦</span></div>
+
+              <section class="player-zone" aria-labelledby="player-title">
+                <h2 class="visually-hidden" id="player-title">Tus manos</h2>
+                <div class="player-hands" id="player-hands"></div>
+              </section>
+
+              <div class="table-footnote"><span>♣</span> BUENA SUERTE</div>
+            </div>
+
+            <div class="action-bar" aria-label="Acciones de la mano">
+              <button class="action-button secondary-action" id="stand-button" type="button" disabled>
+                <span>↗</span> Plantarse
+              </button>
+              <button class="action-button primary-action" id="hit-button" type="button" disabled>
+                <span>＋</span> Pedir
+              </button>
+              <button class="action-button secondary-action" id="double-button" type="button" disabled>
+                <span>⇧</span> Doblar
+              </button>
+              <button class="action-button secondary-action" id="split-button" type="button" disabled>
+                <span>Ⅱ</span> Dividir
+              </button>
+              <button class="action-button quiet-action" id="surrender-button" type="button" disabled>Rendirse</button>
+            </div>
+            <div class="insurance-actions" id="insurance-actions" hidden>
+              <p>El seguro cuesta la mitad de la apuesta y paga 2:1 si el crupier tiene blackjack.</p>
+              <button class="insurance-button" id="insurance-button" type="button">
+                Contratar seguro · <span id="insurance-cost">0</span>
+              </button>
+              <button class="decline-insurance" id="decline-insurance" type="button">Sin seguro</button>
+            </div>
+            <button class="next-round" id="next-round" type="button" hidden>
+              Siguiente ronda <span aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <aside class="side-panel" aria-label="Saldo y apuesta">
+            <section class="balance-block">
+              <p class="eyebrow">TU SALDO</p>
+              <div class="balance-value"><span class="currency">◆</span><span id="balance">500</span></div>
+              <p class="balance-note">Fichas disponibles</p>
+            </section>
+
+            <section class="bet-block" aria-labelledby="bet-title">
+              <div class="panel-title-row">
+                <h2 id="bet-title">Tu apuesta</h2>
+                <span class="minimum-bet">MÍN. 1</span>
+              </div>
+              <div class="bet-total"><span>◆</span> <span id="bet-total">0</span></div>
+              <div class="chip-tray" aria-label="Denominaciones de fichas">
+                <button class="chip chip-one" type="button" data-amount="1" aria-label="Añadir ficha de 1">1</button>
+                <button class="chip chip-five" type="button" data-amount="5" aria-label="Añadir ficha de 5">5</button>
+                <button class="chip chip-ten" type="button" data-amount="10" aria-label="Añadir ficha de 10">10</button>
+                <button class="chip chip-fifty" type="button" data-amount="50" aria-label="Añadir ficha de 50">50</button>
+                <button class="chip chip-hundred" type="button" data-amount="100" aria-label="Añadir ficha de 100">100</button>
+                <button class="chip chip-fivehundred" type="button" data-amount="500" aria-label="Añadir ficha de 500">500</button>
+              </div>
+              <button class="deal-button" id="deal-button" type="button" disabled>Repartir <span aria-hidden="true">→</span></button>
+              <button class="clear-bet" id="clear-bet" type="button" disabled>Retirar apuesta</button>
+            </section>
+
+            <section class="rules-note" aria-label="Reglas de la mesa">
+              <span class="rules-icon" aria-hidden="true">♧</span>
+              <div><strong>Blackjack paga 3:2</strong><span>El crupier se planta en 17 suave</span></div>
+            </section>
+          </aside>
+        </section>
+      </main>
+
+      <footer class="page-footer">
+        <span>MESA 21 <i>·</i> BLACKJACK</span>
+        <span>BUENAS CARTAS, MEJORES DECISIONES</span>
+      </footer>
+    </div>
+  </body>
+</html>
