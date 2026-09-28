@@ -26,3 +26,8 @@ Prompts reales (extractos):
 
 Comprobé las fases en el navegador con manos controladas: puntuación de ases, blackjack natural, seguro ganado y perdido, división, doblar, rendición, saldos, cambio de ronda y barajado. También revisé que no hubiera `onclick`, `innerHTML` ni frameworks.
 
+## Autopsia
+
+1. Guardo las cartas, apuesta y estado de cada mano en objetos dentro de `playerHands`, y el índice de la mano activa por separado. Así puedo dividir hasta cuatro manos y liquidar cada apuesta individualmente. La alternativa era usar una sola mano y leer cartas desde el DOM; eso no representa bien una partida dividida y acopla las reglas a la interfaz.
+2. Renuevo el mazo entre rondas cuando quedan menos de 52 cartas, en lugar de mezclarlo al quedar solo unas pocas cartas durante una jugada. Al probar el mazo agotado, el barajado durante el reparto podía mezclar cartas nuevas en mitad de la mano. La alternativa de esperar al agotamiento completo se conserva como reserva para no bloquear una ronda excepcionalmente larga.
+
