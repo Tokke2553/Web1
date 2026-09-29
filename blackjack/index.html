@@ -9,6 +9,7 @@
   </head>
   <body>
     <div class="app-shell">
+      <!-- La cabecera mantiene la marca y el control global del tema. -->
       <header class="topbar">
         <a class="brand" href="#mesa" aria-label="Mesa 21, inicio">
           <span class="brand-mark" aria-hidden="true">21</span>
@@ -29,6 +30,7 @@
       </header>
 
       <main id="mesa">
+        <!-- app.js actualiza la mesa desde el estado; el panel lateral gestiona saldo y apuestas. -->
         <section class="game-layout" aria-label="Mesa de blackjack">
           <div class="table-area">
             <div class="table-heading">
@@ -45,6 +47,7 @@
 
             <div class="felt-table">
               <div class="felt-ornament" aria-hidden="true">♠</div>
+              <!-- El crupier se renderiza en este hueco; su segunda carta se oculta durante el turno del jugador. -->
               <section class="dealer-zone" aria-labelledby="dealer-title">
                 <div class="hand-heading">
                   <h2 id="dealer-title">Crupier</h2>
@@ -56,6 +59,7 @@
 
               <div class="table-divider" aria-hidden="true"><span>✦</span></div>
 
+              <!-- Aquí se construyen las manos del jugador, incluidas las que aparecen al dividir. -->
               <section class="player-zone" aria-labelledby="player-title">
                 <h2 class="visually-hidden" id="player-title">Tus manos</h2>
                 <div class="player-hands" id="player-hands"></div>
@@ -64,6 +68,7 @@
               <div class="table-footnote"><span>♣</span> BUENA SUERTE</div>
             </div>
 
+            <!-- Los botones están desactivados fuera del turno o cuando la regla no permite la acción. -->
             <div class="action-bar" aria-label="Acciones de la mano">
               <button class="action-button secondary-action" id="stand-button" type="button" disabled>
                 <span>↗</span> Plantarse
@@ -79,6 +84,7 @@
               </button>
               <button class="action-button quiet-action" id="surrender-button" type="button" disabled>Rendirse</button>
             </div>
+            <!-- El seguro solo se muestra si el crupier abre con un as. -->
             <div class="insurance-actions" id="insurance-actions" hidden>
               <p>El seguro cuesta la mitad de la apuesta y paga 2:1 si el crupier tiene blackjack.</p>
               <button class="insurance-button" id="insurance-button" type="button">
@@ -91,6 +97,7 @@
             </button>
           </div>
 
+          <!-- El saldo y el valor total apostado se actualizan tras cada acción. -->
           <aside class="side-panel" aria-label="Saldo y apuesta">
             <section class="balance-block">
               <p class="eyebrow">TU SALDO</p>

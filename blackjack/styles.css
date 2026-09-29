@@ -1,3 +1,4 @@
+/* Paleta común: el modo oscuro cambia estas variables en lugar de duplicar todos los estilos. */
 :root {
   color-scheme: light;
   --page: #f3f0e8;
@@ -20,6 +21,7 @@
 }
 
 body {
+  /* El diseño es solo de escritorio; en pantallas menores se conserva este ancho y hay desplazamiento horizontal. */
   min-width: 1024px;
   min-height: 100vh;
   margin: 0;
@@ -30,6 +32,7 @@ body {
 }
 
 body.dark-mode {
+  /* toggleTheme añade o quita esta clase en body para alternar la paleta. */
   color-scheme: dark;
   --page: #171d1b;
   --paper: #202825;
@@ -156,6 +159,7 @@ main {
 }
 
 .game-layout {
+  /* La mesa ocupa el espacio flexible y el panel de saldo conserva un ancho fijo. */
   display: grid;
   grid-template-columns: minmax(0, 1fr) 276px;
   align-items: stretch;
@@ -214,6 +218,7 @@ h1 em {
 }
 
 .felt-table {
+  /* Las capas de fondo simulan el fieltro; overflow recorta la decoración dentro de la mesa. */
   position: relative;
   min-height: 470px;
   overflow: hidden;
@@ -267,6 +272,7 @@ h1 em {
 }
 
 .player-hands {
+  /* Cuatro manos posibles se muestran en una cuadrícula de dos columnas. */
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
@@ -281,6 +287,7 @@ h1 em {
 }
 
 .player-hand.active-hand {
+  /* El borde resalta la mano cuyo turno está activo en el estado JavaScript. */
   border-color: rgba(242, 217, 149, 0.72);
   box-shadow: inset 0 0 0 1px rgba(242, 217, 149, 0.12);
 }
@@ -322,6 +329,7 @@ h1 em {
 }
 
 .insurance-actions {
+  /* Este panel solo aparece cuando el crupier muestra un as. */
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -462,6 +470,7 @@ h1 em {
 }
 
 .card-back {
+  /* El patrón distingue la carta tapada sin revelar su rango ni su palo. */
   padding: 6px;
   border: 1px solid rgba(255, 255, 255, 0.55);
   background: repeating-linear-gradient(45deg, #a64d43 0 4px, #b96051 4px 8px);
@@ -780,6 +789,7 @@ button:disabled {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Respeta la preferencia del sistema y elimina animaciones que puedan molestar. */
   *,
   *::before,
   *::after {

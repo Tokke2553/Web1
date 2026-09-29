@@ -1,3 +1,4 @@
+// Estos selectores conectan los controles HTML con el estado y el renderizado del juego.
 const themeToggle = document.querySelector("#theme-toggle");
 const chipButtons = document.querySelectorAll(".chip[data-amount]");
 const dealButton = document.querySelector("#deal-button");
@@ -20,6 +21,7 @@ const dealerTotalDisplay = document.querySelector("#dealer-total");
 const roundNumberDisplay = document.querySelector("#round-number");
 const gameMessage = document.querySelector("#game-message");
 
+// Las reglas principales quedan juntas para localizar fácilmente los límites de la mesa.
 const rules = {
   deckCount: 6,
   startingBalance: 500,
@@ -37,6 +39,7 @@ const suits = [
 
 const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
+// Este objeto es la fuente de verdad; el DOM solo muestra sus valores actuales.
 const state = {
   shoe: createShoe(),
   balance: rules.startingBalance,
@@ -104,6 +107,7 @@ function scoreHand(cards) {
 }
 
 function drawCard() {
+  // La reserva evita que una partida excepcionalmente larga se quede sin cartas.
   if (state.shoe.length === 0) {
     state.shoe = createShoe();
   }
@@ -112,6 +116,7 @@ function drawCard() {
 }
 
 function createCardElement(card, isHidden = false) {
+  // Se usan nodos y textContent para no interpretar el rango o palo como HTML.
   const cardElement = document.createElement("div");
   cardElement.classList.add("playing-card");
 
@@ -166,6 +171,7 @@ function renderHand(container, cards, hiddenIndex = -1) {
 }
 
 function createPlayerHand(cards, bet, isSplit = false, splitAces = false) {
+  // Cada mano conserva su apuesta y estado para poder resolver divisiones correctamente.
   return { cards, bet, isSplit, splitAces, hasActed: false, status: "active" };
 }
 
@@ -192,6 +198,7 @@ function getTotalWager() {
 }
 
 function renderPlayerHands() {
+  // La interfaz se reconstruye desde playerHands; las reglas no dependen del DOM.
   playerHandsDisplay.replaceChildren();
 
   for (let index = 0; index < state.playerHands.length; index += 1) {
@@ -250,6 +257,7 @@ function renderPlayerHands() {
 }
 
 function render() {
+  // Cada cambio de estado pasa por aquí para actualizar textos, cartas y botones disponibles.
   const isBetting = state.phase === "betting";
   const activeHand = getActiveHand();
   const isPlayerTurn = state.phase === "playerTurn" && activeHand?.status === "active";
@@ -355,6 +363,7 @@ function dealInitialHands() {
 }
 
 function resolveInitialBlackjack() {
+  // El blackjack natural solo cuenta con las dos cartas iniciales, antes de dividir.
   const dealerNatural = scoreHand(state.dealerHand).total === 21;
   const playerNatural = isNaturalBlackjack(state.playerHands[0]);
 
@@ -392,6 +401,7 @@ function takeInsurance() {
 
   state.insuranceBet = state.bet / 2;
   state.balance -= state.insuranceBet;
+  // El seguro se resuelve comprobando la mano inicial del crupier.
   resolveInitialBlackjack();
 }
 
@@ -433,6 +443,7 @@ function playDealerTurn() {
     }
   }
 
+  // La misma mano del crupier se compara por separado con cada mano del jugador.
   const dealerTotal = scoreHand(state.dealerHand).total;
   const results = [];
 
@@ -468,6 +479,7 @@ function playDealerTurn() {
 }
 
 function advanceHand() {
+  // Busca la siguiente mano activa; el crupier juega cuando todas han terminado.
   for (let index = state.activeHandIndex + 1; index < state.playerHands.length; index += 1) {
     if (state.playerHands[index].status === "active") {
       state.activeHandIndex = index;
@@ -553,6 +565,7 @@ function splitHand() {
     return;
   }
 
+  // Cada carta inicial pasa a una mano nueva y se añade una apuesta igual para la segunda.
   const [firstCard, secondCard] = hand.cards;
   const splitAces = firstCard.rank === "A" && secondCard.rank === "A";
   state.balance -= hand.bet;
@@ -591,6 +604,7 @@ function startNextRound() {
     return;
   }
 
+  // Se conserva saldo y mazo, pero se limpia el estado de la ronda anterior.
   state.bet = 0;
   state.dealerHand = [];
   state.playerHands = [];
@@ -610,6 +624,7 @@ function toggleTheme() {
   );
 }
 
+// Los eventos se conectan desde JavaScript para evitar handlers inline en el HTML.
 themeToggle.addEventListener("click", toggleTheme);
 
 for (const chipButton of chipButtons) {
