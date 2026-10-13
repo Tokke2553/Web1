@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
+enunciado-m2-async-odyssey.pdf
 
 # Editor directories and files
 .vscode/*
