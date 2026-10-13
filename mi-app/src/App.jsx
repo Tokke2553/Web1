@@ -4,39 +4,45 @@ function App() {
   return (
     <>
       <header className="site-header">
-        <a className="site-name" href="#inicio">
-          Tokke
+        <a className="site-name" href="#inicio" aria-label="Cinebusca, inicio">
+          Cinebusca
         </a>
-        <nav aria-label="Navegación principal">
-          <a href="#sobre-mi">Sobre mí</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
       </header>
 
-      <main>
-        <section className="hero" id="inicio">
-          <p className="eyebrow">Una página hecha por mí</p>
-          <h1>Tokke</h1>
+      <main id="inicio">
+        <section className="hero" aria-labelledby="page-title">
+          <p className="eyebrow">Explora el mundo del cine</p>
+          <h1 id="page-title">Encuentra tu próxima película</h1>
           <p className="intro">
-            Este es mi espacio en internet. Estoy aprendiendo a crear páginas
-            web y aquí empieza mi proyecto.
+            Busca películas por título y descubre algo nuevo para ver.
           </p>
-          <a className="button" href="#sobre-mi">
-            Conoce más
-          </a>
+
+          <form className="search-form" role="search">
+            <label htmlFor="movie-query">Título de la película</label>
+            <div className="search-controls">
+              <input
+                id="movie-query"
+                name="query"
+                type="search"
+                placeholder="Ej.: El viaje de Chihiro"
+                autoComplete="off"
+              />
+              <button type="button">Buscar</button>
+            </div>
+          </form>
         </section>
 
-        <section className="about" id="sobre-mi">
-          <h2>Sobre esta página</h2>
-          <p>
-            Puedes cambiar este texto, los colores y las secciones para hacer
-            que la página sea tuya.
+        <section className="results" aria-labelledby="results-title">
+          <h2 id="results-title">Resultados</h2>
+          <p className="search-status" role="status" aria-live="polite">
+            Escribe el título de una película para empezar la búsqueda.
           </p>
+          <div className="movie-results" aria-label="Películas encontradas" />
         </section>
       </main>
 
-      <footer id="contacto">
-        <p>Hecho por mí · 2026</p>
+      <footer className="site-footer">
+        <p>Cinebusca · Descubre tu próxima película</p>
       </footer>
     </>
   )
