@@ -2,23 +2,6 @@
 
 Cinebusca busca películas por título en los catálogos públicos de SampleAPIs Movies. Combina las películas repetidas, muestra sus categorías y enlaza a IMDb cuando hay un identificador disponible.
 
-## Cómo arrancar
-
-Necesitas Node.js y npm. Desde esta carpeta, ejecuta:
-
-```bash
-npm install
-npm run dev
-```
-
-Para comprobar la aplicación:
-
-```bash
-npm test
-npm run lint
-npm run build
-```
-
 ## Organización y estado
 
 - `src/App.jsx`: mantiene el texto de búsqueda y coordina las vistas.
