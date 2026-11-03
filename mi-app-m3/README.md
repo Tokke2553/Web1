@@ -2,6 +2,10 @@
 
 Cinebusca busca películas por título en los catálogos públicos de SampleAPIs Movies. Combina las películas repetidas, muestra sus categorías y enlaza a IMDb cuando hay un identificador disponible.
 
+## Cómo arrancar
+
+Con las dependencias ya instaladas, ejecuta `npm run dev` desde esta carpeta y abre en el navegador la dirección local que indique Vite.
+
 ## Organización y estado
 
 - `src/App.jsx`: mantiene el texto de búsqueda y coordina las vistas.
@@ -20,7 +24,7 @@ La búsqueda se filtra al escribir sobre el catálogo ya cargado. La API y sus d
 
 Se utilizó codex en VS Code para leer el enunciado y adaptar Cinebusca de la práctica anterior. La nueva separación de componentes, el hook y el flujo de estado se implementaron con su ayuda. Prompts reales de esta conversación:
 
-> «Lee por completo el pdf, no hagas nada aún, y dime que has comprendido del trabajo»
+> «Lee por completo el pdf, no hagas nada aún ni modifiques nada de momento, y dime que has comprendido del trabajo»
 
 > «Cogiendo el mismo trabajo del m2 hazlo en otra carpeta dentro del mismo repositorio»
 
