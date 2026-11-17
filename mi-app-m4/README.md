@@ -16,7 +16,7 @@ Inicia la aplicación y la API juntas:
 npm run dev
 ```
 
-Vite muestra la dirección de la aplicación. El mismo comando inicia JSON Server en `http://localhost:3001`, que guarda los registros en `db.json`; mantén abierta la terminal mientras usas la app. Si necesitas iniciar solo una parte, están disponibles `npm run dev:web` y `npm run dev:api`.
+Vite muestra la dirección de la aplicación. El mismo comando inicia JSON Server en `http://localhost:3001`, que guarda los registros en `db.json` Si necesitas iniciar solo una parte, están disponibles `npm run dev:web` y `npm run dev:api`.
 
 ## Cómo funciona
 
@@ -38,15 +38,15 @@ npm run build
 
 ## Uso de IA
 
-Se utilizó Copilot en VS Code para revisar los trabajos anteriores, planificar e implementar la M4 y comprobarla. Prompts relevantes:
+Se utilizó Copilot en VS Code para planificar la M4 y testear y comprobar el funcionamiento, se uso también para solucionar algunos problemas a la hora de hacer la web. Prompts relevantes:
 
-> «Este es el m4, leelo primero de que trata y dime que se pide el trabajo no hagas nada»
+-Este es el m4, leelo primero de que trata y dime que se pide el trabajo no hagas nada»
 
-> «el 2 **Propuestas para eventos**, haz la planificacion primero, chequea los otros trabajos para usar el mismo formato de trabajo»
+-El tema del trabajo: Propuestas para eventos, haz la planificacion primero, chequea los otros trabajos anteriores para usar el mismo formato de trabajo
 
-La persona autora eligió el tema y el formato de trabajo, revisó el plan y decidió usar JSON Server local. La aplicación se verificó con las pruebas, el lint y el build indicados arriba.
+Yo me encargue de eligir el tema y el formato de trabajo, revisçe el plan propuesto por la IA, diseñé la web y también decidí usar JSON Server local. La aplicación se verificó con las pruebas, el lint y el build indicados arriba.
 
 ## Autopsia
 
-1. **JSON Server local en lugar de un endpoint alojado:** permite probar GET y POST persistentes sin crear una cuenta. La alternativa era un servicio público; requiere configurar y compartir su URL. La limitación es que el servidor local debe estar activo para usar la aplicación.
-2. **Validar la respuesta de la API con Zod:** así un dato corrupto produce un error visible. La alternativa era confiar en el servidor y usar sus datos directamente.
+1. JSON Server local en lugar de un endpoint alojado: permite probar GET y POST persistentes sin crear una cuenta. La alternativa era un servicio público; requiere configurar y compartir su URL. La limitación es que el servidor local debe estar activo para usar la aplicación.
+2. Validar la respuesta de la API con Zod: así un dato corrupto produce un error visible. La alternativa era confiar en el servidor y usar sus datos directamente.
