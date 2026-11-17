@@ -10,19 +10,13 @@ Necesitas Node.js y npm. Desde esta carpeta:
 npm install
 ```
 
-Inicia la API en una terminal:
-
-```bash
-npm run dev:api
-```
-
-Inicia React en otra:
+Inicia la aplicación y la API juntas:
 
 ```bash
 npm run dev
 ```
 
-Vite muestra la dirección de la aplicación. JSON Server escucha en `http://localhost:3001` y guarda los registros en `db.json`; por eso se deben mantener los dos procesos activos.
+Vite muestra la dirección de la aplicación. El mismo comando inicia JSON Server en `http://localhost:3001`, que guarda los registros en `db.json`; mantén abierta la terminal mientras usas la app. Si necesitas iniciar solo una parte, están disponibles `npm run dev:web` y `npm run dev:api`.
 
 ## Cómo funciona
 
