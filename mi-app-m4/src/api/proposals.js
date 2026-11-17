@@ -1,4 +1,4 @@
-import { parseProposalList, parseProposalResponse } from '../schemas/proposal.js'
+import { parseProposal, parseProposalList } from '../schemas/proposal.js'
 
 const API_URL = 'http://localhost:3001/proposals'
 
@@ -26,8 +26,7 @@ async function request(url, options) {
 }
 
 export const proposalKeys = {
-  all: ['proposals'],
-  list: ['proposals', 'list'],
+  list: ['proposals'],
 }
 
 export async function getProposals() {
@@ -41,8 +40,8 @@ export async function createProposal(values) {
   const payload = await request(API_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ...values, duration: Number(values.duration), createdAt: new Date().toISOString() }),
+    body: JSON.stringify({ ...values, createdAt: new Date().toISOString() }),
   })
 
-  return parseProposalResponse(payload)
+  return parseProposal(payload)
 }

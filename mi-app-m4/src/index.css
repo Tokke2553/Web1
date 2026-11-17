@@ -1,22 +1,17 @@
 :root {
-  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
-  color: #242927;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #282b27;
   background: #f5f3ed;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 
-  --color-paper: #f5f3ed;
-  --color-white: #fffefa;
-  --color-ink: #242927;
-  --color-muted: #727772;
-  --color-line: #dcded6;
-  --color-accent: #d95336;
-  --color-accent-dark: #b83d25;
-  --color-highlight: #e5eea1;
-  --font-display: Georgia, "Times New Roman", serif;
-  --font-body: "Segoe UI", "Helvetica Neue", sans-serif;
+  --ink: #282b27;
+  --muted: #6f756e;
+  --line: #dedfd8;
+  --surface: #fffefa;
+  --accent: #c94d32;
+  --serif: Georgia, "Times New Roman", serif;
 }
 
 * {
@@ -32,7 +27,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
-  font-family: var(--font-body);
 }
 
 button,
@@ -42,31 +36,18 @@ textarea {
   font: inherit;
 }
 
-button,
-select {
-  cursor: pointer;
-}
-
-a {
-  color: inherit;
-}
-
 :focus-visible {
-  outline: 3px solid var(--color-accent);
+  outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
 
 ::selection {
-  color: var(--color-ink);
-  background: var(--color-highlight);
+  color: var(--ink);
+  background: #e5eea1;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
+  html {
+    scroll-behavior: auto;
   }
 }

@@ -6,7 +6,6 @@
       "email": "lucia@example.com",
       "title": "Diseñar para un mundo que cambia",
       "category": "charla",
-      "duration": 30,
       "abstract": "Una mirada práctica a cómo los equipos pueden crear productos digitales más humanos cuando la tecnología y las necesidades cambian cada día.",
       "createdAt": "2026-10-28T10:00:00.000Z"
     },
@@ -16,7 +15,6 @@
       "email": "diego@example.com",
       "title": "Un taller para contar historias con datos",
       "category": "taller",
-      "duration": 60,
       "abstract": "Aprenderemos a encontrar una narrativa en los datos y a compartirla con claridad, incluso si nunca antes has abierto una herramienta de visualización.",
       "createdAt": "2026-11-02T14:30:00.000Z"
     },
@@ -26,7 +24,6 @@
       "email": "amina@example.com",
       "title": "¿De quién son las ciudades del futuro?",
       "category": "mesa-redonda",
-      "duration": 45,
       "abstract": "Una conversación abierta sobre diseño urbano, tecnología cívica y la importancia de incluir a las comunidades en las decisiones que transforman sus barrios.",
       "createdAt": "2026-11-05T09:15:00.000Z"
     }
